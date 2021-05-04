@@ -1,0 +1,44 @@
+PRODUCER keyed-message
+topic: UbuntuTopic
+key: mykeyq
+{{random.words}}
+
+###
+
+
+PRODUCER keyed-message
+topic: UbuntuTopic
+key-format: integer 
+{
+    {{random.number}}
+}
+###
+
+PRODUCER keyed-message
+topic: UbuntuTopic
+key: myaddress-{{random.number(1000)}}
+{
+    "firstname": "{{name.firstName}}", 
+    "lastname": "{{name.lastName}}", 
+    "phone": "{{phone.phoneNumber}}"
+}
+
+###
+
+PRODUCER keyed-message
+topic: my-topic
+key: mykeyq
+{{random.words}}
+
+###
+
+PRODUCER keyed-message
+topic: my-topic
+key: myaddress-{{random.number(1000)}}
+{
+    "firstname": "{{name.firstName}}", 
+    "lastname": "{{name.lastName}}", 
+    "phone": "{{phone.phoneNumber}}"
+}
+
+###
