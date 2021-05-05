@@ -33,21 +33,13 @@ def hello_there(request, name):
     return HttpResponse(content)
 
 def mykafkaview(request): 
-    consumer = KafkaConsumer(bootstrap_servers='localhost:9092', auto_offset_reset='earliest', enable_auto_commit=False, consumer_timeout_ms=1000)    
+    consumer = KafkaConsumer(bootstrap_servers='localhost:9092', auto_offset_reset='latest', enable_auto_commit=False, consumer_timeout_ms=1000)    
     consumer.subscribe(['UbuntuTopic'])
     
-    #deserialized_data = []
+    deserialized_data = ""
     for message in consumer: 
         print ("%s:%d:%d: key=%s value=%s" % (message.topic, message.partition,message.offset, message.key,message.value))                             
         #deserialized_data.append(pickle.loads(message.value))
-        deserialized_data = message.value # pickle.loads(message.value)
-        return HttpResponse("I received: " + deserialized_data)
-
-"""     for p in consumer.partitions_for_topic('UbuntuTopic'):
-        tp = TopicPartition('UbuntuTopic', p)
-        consumer.assign([tp])
-        committed = consumer.committed(tp)
-        consumer.seek_to_end(tp)
-        last_offset = consumer.position(tp)
-        print("topic: %s partition: %s committed: %s last: %s lag: %s" % ('UbuntuTopic', p, committed, last_offset, (last_offset - committed)))
- """
+        deserialized_data = message.value #.decode('utf-8') # pickle.loads(message.value)
+    
+    return HttpResponse("I received: " + deserialized_data)

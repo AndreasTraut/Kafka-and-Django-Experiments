@@ -1,3 +1,15 @@
 CONSUMER vscode-kafka-myvskafkacluster-bG9jYWxob3N0OjkwOTI-UbuntuTopic
 topic: UbuntuTopic
-from: earliest
+from: 0
+
+###
+
+CONSUMER consumer-group-id
+topic: erstesTopic
+from: 0
+
+###
+
+CONSUMER consumer-group-id1
+topic: my-topic
+from: 0

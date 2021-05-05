@@ -1,4 +1,11 @@
 PRODUCER keyed-message
+topic: erstesTopic
+key: mykeyq
+{{random.words}}
+
+### 
+
+PRODUCER keyed-message
 topic: UbuntuTopic
 key: mykeyq
 {{random.words}}
