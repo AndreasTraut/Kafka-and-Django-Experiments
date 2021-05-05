@@ -1,8 +1,8 @@
 # HelloWorld-Django
 
-Test:
+Test:  
 http://127.0.0.1:8000/hello/name
 
-Kafka: 
+Kafka:   
 http://127.0.0.1:8000/mykafkaview
 
