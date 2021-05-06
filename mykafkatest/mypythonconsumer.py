@@ -7,7 +7,6 @@ import threading, time
 from kafka import KafkaAdminClient, KafkaConsumer, KafkaProducer
 from kafka.admin import NewTopic
 
-
 class Producer(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
@@ -25,7 +24,6 @@ class Producer(threading.Thread):
             time.sleep(1)
 
         producer.close()
-
 
 class Consumer(threading.Thread):
     def __init__(self):
