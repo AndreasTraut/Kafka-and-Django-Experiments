@@ -9,9 +9,9 @@ import pickle # pickle converts data into byte array
 from django.http import HttpResponse
 
 def home(request):
-    your_url = 'hello'  # Define your URL here
-    print("<a href={}>link</a>".format(your_url))
-    return HttpResponse("Hello, Django! I am in a Ubuntu Container in Visual Studio! Please click <a href={}>here</a>!".format(your_url))
+    mykafkaconsumer_url = 'mykafkaconsumer'  # Define your URL here
+    print("<a href={}>link</a>".format(mykafkaconsumer_url))
+    return HttpResponse("Hello, Django! I am in a Ubuntu Container in Visual Studio! Please click <a href={}>here</a> to start mykafkaconsumer!".format(mykafkaconsumer_url))
 
 def hello(request):
     return HttpResponse("Hello! Please enter a name behind the / in the url-adress!")
@@ -32,7 +32,7 @@ def hello_there(request, name):
     content = "Hello there, " + clean_name + "! It's " + formatted_now
     return HttpResponse(content)
 
-def mykafkaview(request): 
+def mykafkaconsumer(request): 
     consumer = KafkaConsumer(bootstrap_servers='localhost:9092', auto_offset_reset='latest', enable_auto_commit=False, consumer_timeout_ms=1000)    
     consumer.subscribe(['UbuntuTopic'])
     
@@ -42,4 +42,10 @@ def mykafkaview(request):
         #deserialized_data.append(pickle.loads(message.value))
         deserialized_data = message.value #.decode('utf-8') # pickle.loads(message.value)
     
-    return HttpResponse("I received: " + deserialized_data)
+    return HttpResponse("I am a Kafka-Consumer and I received: " + deserialized_data)
+
+
+def mykafkaproducer(request): 
+    myevent = ""
+    # not yet implemented ....
+    return HttpResponse("I am a Kafka-Producer and I am not doing anything at the moment... waiting for being implemented later....  ")
