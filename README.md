@@ -1,4 +1,4 @@
-# "Real-Time" Internet-of-Things Project
+# "Real-Time" Internet-of-Things Project (Part 2)
 
 I am working on a "Real-Time" app for streaming Internet-of-Things (IoT) data (e.g. temperature,...) through Kafka and Apache Streams into my Django app and applying machine-learning prediction algorithms. 
 
